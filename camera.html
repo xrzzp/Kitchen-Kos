@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --primary-green: #2d5a1b;
+            --accent-gold: #efc84a;
+            --bg-gray: #f7f8f3;
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', sans-serif; 
+            background-color: var(--bg-gray); 
+            padding-bottom: 30px;
+        }
+
+        /* Header Area */
+        .header { 
+            background: white; 
+            padding: 15px 18px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .header b { color: var(--primary-green); font-size: 18px; }
+
+        /* Camera Viewfinder */
+        .camera-container {
+            margin: 15px;
+            position: relative;
+            height: 320px;
+            background: #ddd;
+            border-radius: 25px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .scanner-frame {
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 20px;
+            position: relative;
+        }
+        .scan-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(239, 200, 74, 0.9);
+            color: #412402;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .camera-controls {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .shutter-btn {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+
+        /* Scan Buttons */
+        .btn-row { 
+            display: flex; 
+            gap: 12px; 
+            padding: 0 15px; 
+            margin-top: 20px;
+        }
+        .btn-scan { 
+            flex: 1; 
+            padding: 12px; 
+            border-radius: 12px; 
+            border: none; 
+            font-weight: bold; 
+            font-size: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Scan Results */
+        .section-title { padding: 20px 18px 10px; font-size: 14px; font-weight: bold; color: #333; }
+        .result-item {
+            background: white;
+            margin: 0 15px 10px;
+            padding: 12px 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #eee;
+        }
+        .result-icon { font-size: 24px; }
+        .result-info h4 { margin: 0; font-size: 13px; }
+        .result-info p { margin: 2px 0 0; font-size: 10px; color: #888; }
+
+        /* Recipe Recommendations */
+        .recipe-scroll {
+            display: flex;
+            gap: 12px;
+            padding: 10px 15px 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .recipe-card {
+            min-width: 180px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+        .recipe-img { height: 110px; background: #eee; }
+        .recipe-info { padding: 10px; }
+        .recipe-info h4 { margin: 0; font-size: 12px; }
+        .price-row { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 8px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            color: var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <img src="Logo KK.png" width="25" alt="Logo">
+            <b>Kitchen Kos</b>
+        </div>
+        <span>🔔</span>
+    </div>
+
+    <!-- Tampilan Kamera -->
+    <div class="camera-container" style="background: url('https://images.unsplash.com/photo-1584270354949-c26b0d5b4a0c?q=80&w=500') center/cover;">
+        <div class="scanner-frame">
+            <div class="scan-label">📍 Terdeteksi: Brokoli</div>
+        </div>
+        <div class="camera-controls">
+            <span style="color:white; font-size:20px;">💡</span>
+            <div class="shutter-btn"></div>
+            <span style="color:white; font-size:20px;">🔄</span>
+        </div>
+    </div>
+
+    <div class="btn-row">
+        <button class="btn-scan" style="background: var(--accent-gold);">📄 Scan Struk</button>
+        <button class="btn-scan" style="background: var(--primary-green); color: white;">✔️ Simpan Semua</button>
+    </div>
+
+    <div class="section-title">Hasil Scan (1 Bahan Ditemukan)</div>
+    
+    <div class="result-item">
+        <div class="result-icon">🥦</div>
+        <div class="result-info" style="flex:1;">
+            <h4>Brokoli</h4>
+            <p>300 g • Segar</p>
+        </div>
+        <span>✏️</span>
+    </div>
+
+    <div class="section-title" style="display:flex; justify-content:space-between;">
+        <span>Resep dari hasil scan</span>
+        <span style="font-size:10px; color:var(--primary-green);">Lihat Semua</span>
+    </div>
+
+    <div class="recipe-scroll">
+        <div class="recipe-card">
+            <div class="recipe-img" style="background: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=200') center/cover;"></div>
+            <div class="recipe-info">
+                <h4>Tumis Brokoli Telur</h4>
+                <div class="price-row">
+                    <span>Rp 12k/porsi</span>
+                    <span style="color:#888; font-weight:normal;">⏱️ 15m</span>
+                </div>
+            </div>
+        </div>
+        <div class="recipe-card">
+            <div class="recipe-img" style="background: url('https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=200') center/cover;"></div>
+            <div class="recipe-info">
+                <h4>Sup Sayur Campur</h4>
+                <div class="price-row">
+                    <span>Rp 15k/porsi</span>
+                    <span style="color:#888; font-weight:normal;">⏱️ 20m</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

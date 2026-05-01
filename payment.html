@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --primary-green: #2d5a1b;
+            --gold-grad: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --bg-gray: #f7f8f3;
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', sans-serif; 
+            background-color: var(--bg-gray); 
+            padding-bottom: 30px;
+        }
+
+        /* Header */
+        .header { 
+            background: white; 
+            padding: 15px 18px; 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .header b { color: var(--primary-green); font-size: 16px; }
+
+        /* Order Summary Card */
+        .order-card {
+            background: white;
+            margin: 20px 18px;
+            padding: 20px;
+            border-radius: 20px;
+            border: 1.5px solid transparent;
+            background: linear-gradient(white, white) padding-box, var(--gold-grad) border-box;
+            box-shadow: 0 5px 15px rgba(191, 149, 63, 0.1);
+        }
+        .order-card h2 { margin: 0; font-size: 18px; color: #333; }
+        .order-card p { font-size: 11px; color: #777; margin: 5px 0 15px; }
+        .price-row { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px dashed #ddd; padding-top: 15px; }
+        .price-row b { font-size: 22px; color: var(--primary-green); }
+
+        /* Payment Methods */
+        .section-title { padding: 10px 20px; font-size: 13px; font-weight: bold; color: #666; text-transform: uppercase; }
+        
+        .method-list { background: white; margin: 0 18px 20px; border-radius: 20px; border: 1px solid #eee; overflow: hidden; }
+        .method-item {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid #f9f9f9;
+            cursor: pointer;
+        }
+        .method-item:last-child { border-bottom: none; }
+        .method-item img { width: 40px; height: auto; border-radius: 4px; }
+        .method-item span { flex: 1; font-size: 13px; font-weight: 600; color: #333; }
+        .radio-circle { width: 18px; height: 18px; border: 2px solid #ddd; border-radius: 50%; position: relative; }
+        .method-item.active .radio-circle { border-color: var(--primary-green); }
+        .method-item.active .radio-circle::after { 
+            content: ''; width: 10px; height: 10px; background: var(--primary-green); 
+            border-radius: 50%; position: absolute; top: 4px; left: 4px; 
+        }
+
+        /* Bottom Action */
+        .bottom-action {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 360px;
+            background: white;
+            padding: 15px 20px;
+            box-sizing: border-box;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+        }
+        .total-info p { margin: 0; font-size: 10px; color: #888; }
+        .total-info b { font-size: 16px; color: var(--primary-green); }
+        .pay-btn {
+            background: var(--primary-green);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 13px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span onclick="history.back()" style="cursor:pointer;">⬅️</span>
+        <b>Pembayaran Premium</b>
+    </div>
+
+    <!-- Summary Penjualan -->
+    <div class="order-card">
+        <h2>Premium Pro 1 Bulan</h2>
+        <p>Akses Chatbot AI, Scan Bahan, & Barter Sepuasnya.</p>
+        <div class="price-row">
+            <span>Total Bayar</span>
+            <b>Rp 20.000</b>
+        </div>
+    </div>
+
+    <div class="section-title">E-Wallet & QRIS</div>
+    <div class="method-list">
+        <div class="method-item active">
+            <span style="font-size: 20px;">📱</span>
+            <span>ShopeePay / GoPay / Dana</span>
+            <div class="radio-circle"></div>
+        </div>
+        <div class="method-item">
+            <span style="font-size: 20px;">🖼️</span>
+            <span>QRIS (Scan Barcode)</span>
+            <div class="radio-circle"></div>
+        </div>
+    </div>
+
+    <div class="section-title">Transfer Bank</div>
+    <div class="method-list">
+        <div class="method-item">
+            <span style="font-size: 20px;">🏦</span>
+            <span>Bank BCA (Virtual Account)</span>
+            <div class="radio-circle"></div>
+        </div>
+        <div class="method-item">
+            <span style="font-size: 20px;">🏧</span>
+            <span>Bank Mandiri / BRI</span>
+            <div class="radio-circle"></div>
+        </div>
+    </div>
+
+    <!-- Floating Button di Bawah -->
+    <div class="bottom-action">
+        <div class="total-info">
+            <p>Total Harga</p>
+            <b>Rp 20.000</b>
+        </div>
+        <button class="pay-btn">Bayar Sekarang</button>
+    </div>
+
+</body>
+</html>
