@@ -163,15 +163,25 @@
 
     <!-- User Section -->
     <div class="user-section">
-        <div class="avatar-box">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200" class="avatar">
+        <div class="avatar-box" style="width: 85px; height: 85px;"> <!-- Ukuran foto lebih besar sedikit -->
+            <img id="profile-pic" src="https://ui-avatars.com/api/?name=User&background=2d5a1b&color=fff" class="avatar" style="width: 100%; height: 100%;">
             <div class="badge-icon">👑</div>
         </div>
-        <div class="user-meta">
-            <h2>Ari Santoso</h2>
-            <p>📍 Jakarta Selatan</p>
+        
+        <div class="user-meta" style="display: flex; flex-direction: column; gap: 2px;">
+            <h2 id="display-name" style="margin: 0; font-size: 20px;">Memuat nama...</h2>
+            <p id="display-email" style="margin: 0; font-size: 13px; color: #888;">user@email.com</p>
+            
+            <!-- Pilihan Gender di Bawah Nama & Email -->
+            <div style="margin-top: 10px; display: flex; gap: 10px;">
+                <div onclick="ubahFoto('pria')" style="cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 11px; color: #666; background: #eee; padding: 4px 10px; border-radius: 20px;">
+                    <span>🙋‍♂️</span> Pria
+                </div>
+                <div onclick="ubahFoto('wanita')" style="cursor: pointer; display: flex; align-items: center; gap: 4px; font-size: 11px; color: #666; background: #eee; padding: 4px 10px; border-radius: 20px;">
+                    <span>🙋‍♀️</span> Wanita
+                </div>
+            </div>
         </div>
-        <button class="edit-btn">Edit</button>
     </div>
 
     <!-- Premium Banner -->
@@ -233,5 +243,33 @@
         <div class="menu-item" style="color: #d4537e;">🚪 <span style="color: #d4537e;">Keluar</span></div>
     </div>
 
+<script>
+    // Link foto 3D estetik
+    const gbrPria = "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg";
+    const gbrWanita = "https://img.freepik.com/free-psd/3d-illustration-person-with-long-hair_23-2149436192.jpg";
+
+    window.onload = function() {
+        // Ambil data dari localStorage[cite: 5]
+        const namaTersimpan = localStorage.getItem('namaUser');
+        const emailTersimpan = localStorage.getItem('emailUser');
+        const fotoTersimpan = localStorage.getItem('fotoUser');
+        
+        if (namaTersimpan) {
+            document.getElementById('display-name').innerText = namaTersimpan;
+        }
+        if (emailTersimpan) {
+            document.getElementById('display-email').innerText = emailTersimpan;
+        }
+        if (fotoTersimpan) {
+            document.getElementById('profile-pic').src = fotoTersimpan;
+        }
+    };
+
+    function ubahFoto(gender) {
+        const urlBaru = (gender === 'pria') ? gbrPria : gbrWanita;
+        document.getElementById('profile-pic').src = urlBaru;
+        localStorage.setItem('fotoUser', urlBaru); // Simpan perubahan[cite: 5]
+    }
+</script>
 </body>
 </html>
