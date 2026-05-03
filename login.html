@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root { --primary-green: #2d5a1b; --bg-gray: #f7f8f3; --text-muted: #888; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-gray); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .login-container { background: white; width: 100%; max-width: 360px; padding: 40px 25px; border-radius: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
+        .logo-login { width: 60px; margin-bottom: 20px; }
+        h2 { color: var(--primary-green); margin: 0; font-size: 22px; }
+        p.subtitle { color: var(--text-muted); font-size: 13px; margin: 10px 0 30px; }
+        .input-group { text-align: left; margin-bottom: 20px; }
+        .input-group label { display: block; font-size: 11px; font-weight: bold; color: #555; margin-bottom: 8px; text-transform: uppercase; }
+        .input-group input { width: 100%; padding: 12px 15px; border-radius: 12px; border: 1.5px solid #eee; background: #f9f9f9; box-sizing: border-box; font-size: 14px; outline: none; transition: 0.3s; }
+        .input-group input:focus { border-color: var(--primary-green); background: white; }
+        .btn-login { background: var(--primary-green); color: white; width: 100%; padding: 14px; border-radius: 15px; border: none; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 10px; box-shadow: 0 4px 12px rgba(45, 90, 27, 0.2); }
+        .divider { display: flex; align-items: center; margin: 25px 0; color: #ccc; font-size: 12px; }
+        .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 1px solid #eee; }
+        .divider span { padding: 0 10px; }
+        .social-login { display: flex; gap: 10px; }
+        .social-btn { flex: 1; padding: 10px; border-radius: 12px; border: 1px solid #eee; background: white; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .footer-text { margin-top: 30px; font-size: 13px; color: var(--text-muted); }
+        .footer-text a { color: var(--primary-green); font-weight: bold; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <img src="Logo KK.png" alt="Logo" class="logo-login">
+        <h2>Selamat Datang!</h2>
+        <p class="subtitle">Masuk untuk mulai mengelola dapur hematmu.</p>
+
+        <form>
+    <div class="input-group">
+        <label>Nama Lengkap</label>
+        <input type="text" id="nama-user-login" placeholder="Contoh: Rizka Aulia" required>
+    </div>
+    <div class="input-group">
+        <label>Email Kampus / Umum</label>
+        <input type="email" id="email-user-login" placeholder="nama@kampus.ac.id" required>
+    </div>
+
+    <!-- Fungsi JavaScript dijalankan di sini[cite: 5, 6] -->
+     <button type="button" class="btn-login" onclick="masukKeAplikasi()">Masuk Sekarang</button>
+        </form>
+
+        <div class="divider"><span>ATAU MASUK DENGAN</span></div>
+        <div class="social-login">
+            <button class="social-btn">🌐 Google</button>
+            <button class="social-btn">🔵 Facebook</button>
+        </div>
+        <p class="footer-text">Belum punya akun? <a href="#">Daftar Sekarang</a></p>
+    </div>
+  
+    <script>
+        function masukKeAplikasi() {
+            // Mengirim pesan ke index.html agar memunculkan navigasi bawah[cite: 5, 6]
+            window.parent.postMessage('masuk-ke-beranda', '*');
+        }
+    </script>
+
+<script>
+    function masukKeAplikasi() {
+        const namaInput = document.getElementById('nama-user-login').value;
+        const emailInput = document.getElementById('email-user-login').value;
+        
+        // Menyimpan data ke memori browser agar bisa dipanggil di halaman mana saja
+        if(namaInput) localStorage.setItem('namaUser', namaInput);
+        if(emailInput) localStorage.setItem('emailUser', emailInput);
+
+        // Memberitahu bingkai utama untuk ganti ke beranda[cite: 6]
+        window.parent.postMessage('masuk-ke-beranda', '*');
+    }
+</script>
+</body>
+</html>
