@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --primary-green: #2d5a1b;
+            --bg-gray: #f7f8f3;
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', sans-serif; 
+            background-color: var(--bg-gray); 
+            padding-bottom: 20px;
+        }
+
+        /* Header Area */
+        .header-top { 
+            background: white; 
+            padding: 15px 18px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .header-top img { width: 25px; }
+
+        /* Banner Judul */
+        .title-section { padding: 15px 18px; background: white; }
+        .title-section h1 { font-size: 24px; color: var(--primary-green); margin: 0; font-weight: 800; }
+        .title-section p { font-size: 13px; color: #666; margin: 8px 0 0; }
+
+        /* Filter Chips */
+        .filter-scroll { 
+            display: flex; 
+            gap: 10px; 
+            overflow-x: auto; 
+            padding: 15px 18px; 
+            background: white;
+            scrollbar-width: none; 
+        }
+        .filter-scroll::-webkit-scrollbar { display: none; }
+        .chip { 
+            padding: 7px 15px; 
+            background: #f1f5f0; 
+            border-radius: 20px; 
+            font-size: 10px; 
+            font-weight: bold; 
+            color: #555;
+            white-space: nowrap;
+        }
+        .chip.active { background: var(--primary-green); color: white; }
+
+        /* Kartu Utama (Nasi Goreng) */
+        .main-card { 
+            background: white; 
+            margin: 15px; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            border: 1px solid #eee;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .main-img { width: 100%; height: 160px; object-fit: cover; }
+        .main-info { padding: 15px; position: relative; }
+        .price-badge { 
+            position: absolute; right: 15px; top: 15px; 
+            background: #fff3e0; color: #ba7517; 
+            padding: 4px 8px; border-radius: 8px; font-size: 10px; font-weight: bold;
+        }
+
+        /* Grid Dua Kolom agar Sejajar */
+        .recipe-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 12px; 
+            padding: 0 15px; 
+            align-items: stretch; /* Memaksa tinggi kotak sama dalam satu baris */
+        }
+
+        .small-card { 
+            background: white; 
+            border-radius: 18px; 
+            overflow: hidden; 
+            border: 1px solid #eee;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Kunci tinggi gambar agar tidak balapan */
+        .small-img { 
+            width: 100%; 
+            height: 110px; 
+            background: #eee; 
+            object-fit: cover; 
+        }
+
+        .card-content {
+            padding: 10px;
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tag { 
+            position: absolute; top: 8px; right: 8px; 
+            font-size: 8px; padding: 2px 8px; border-radius: 10px; 
+            font-weight: bold;
+        }
+
+        /* Budget Banner */
+        .budget-card {
+            background: #e8f5e9;
+            margin: 20px 15px;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid #c8e6c9;
+        }
+        .budget-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .budget-row span { font-size: 12px; font-weight: bold; color: var(--primary-green); }
+        .progress-container { height: 8px; background: white; border-radius: 10px; overflow: hidden; }
+        .progress-bar { width: 65%; height: 100%; background: var(--primary-green); }
+    </style>
+</head>
+<body>
+
+    <!-- Header Atas -->
+    <div class="header-top">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <img src="Logo KK.png" alt="Logo">
+            <b style="color:var(--primary-green); font-size:14px;">Kitchen Kos</b>
+        </div>
+        <span>🔔</span>
+    </div>
+
+    <!-- Judul & Filter -->
+    <div class="title-section">
+        <h1>Temukan Resep Hemat</h1>
+        <p>Masak nikmat tanpa bikin kantong bolong.</p>
+    </div>
+
+    <div class="filter-scroll">
+        <div class="chip active">3 Bahan</div>
+        <div class="chip" onclick="location.href='resep_10m.html'" style="cursor: pointer;"> < 10 Menit</div>
+        <div class="chip" onclick="location.href='resep_10rb.html'" style="cursor: pointer;"> < 10 Ribu</div>
+    </div>
+    
+    <!-- Menu Utama: Nasi Goreng -->
+    <div class="main-card">
+        <img src="assets/nasi goreng.jpeg" class="main-img">
+        <div class="main-info">
+            <div class="price-badge">Rp 8k</div>
+            <h3 style="margin:0; font-size:14px;">Nasi Goreng Satsetsat</h3>
+            <p style="font-size:10px; color:#888; margin:5px 0 0;">⏱️ 8 Menit • ⭐ 4.8</p>
+        </div>
+    </div>
+
+    <!-- Grid Resep Kecil -->
+    <div class="recipe-grid">
+        
+        <!-- Menu 1: Telur Sawi -->
+        <div class="small-card">
+            <span class="tag" style="background:#e8f5e9; color:#2d5a1b;">Hemat</span>
+            <img src="assets/telur sawi.jpeg" class="small-img">
+            <div class="card-content">
+                <h4 style="margin:0; font-size:11px;">Telur Sawi</h4>
+                <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                    <span style="font-size:9px; color:#888;">⏱️ 5m</span>
+                    <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 5k</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu 2: Salad Buah -->
+        <div class="small-card">
+            <span class="tag" style="background:#e3f2fd; color:#1565c0;">Segar</span>
+            <img src="assets/salad buah.jpeg" class="small-img">
+            <div class="card-content">
+                <h4 style="margin:0; font-size:11px;">Salad Buah</h4>
+                <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                    <span style="font-size:9px; color:#888;">⏱️ 10m</span>
+                    <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 9k</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu 3: Pancake Pisang -->
+        <div class="small-card">
+            <span class="tag" style="background:#fff3e0; color:#e65100;">Manis</span>
+            <img src="assets/pisang.jpeg" class="small-img">
+            <div class="card-content">
+                <h4 style="margin:0; font-size:11px;">Pancake Pisang</h4>
+                <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                    <span style="font-size:9px; color:#888;">⏱️ 15m</span>
+                    <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 7k</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu 4: Tahu Cabai Garam -->
+        <div class="small-card">
+            <span class="tag" style="background:#ffebee; color:#c62828;">Pedas</span>
+            <img src="assets/tahu cabe.jpeg" class="small-img">
+            <div class="card-content">
+                <h4 style="margin:0; font-size:11px;">Tahu Cabai Garam</h4>
+                <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                    <span style="font-size:9px; color:#888;">⏱️ 12m</span>
+                    <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 4k</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu 5: Pasta Aglio Olio -->
+        <div class="small-card">
+            <span class="tag" style="background:#e0f7fa; color:#006064;">Kenyang</span>
+            <img src="assets/pasta.jpeg" class="small-img">
+            <div class="card-content">
+                <h4 style="margin:0; font-size:11px;">Pasta Aglio Olio</h4>
+                <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                    <span style="font-size:9px; color:#888;">⏱️ 15m</span>
+                    <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 10k</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu 6: Ayam Madu -->
+        <div class="small-card">
+            <span class="tag" style="background:#f3e5f5; color:#7b1fa2;">Favorit</span>
+            <img src="assets/ayam.jpeg" class="small-img">
+            <div class="card-content">
+                <h4 style="margin:0; font-size:11px;">Ayam Madu</h4>
+                <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                    <span style="font-size:9px; color:#888;">⏱️ 20m</span>
+                    <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 12k</span>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- Penutup Grid harus di sini -->
+
+    <!-- Banner Sisa Budget (Sekarang di luar grid) -->
+    <div class="budget-card">
+        <div class="budget-row">
+            <span>Sisa Budget Minggu Ini</span>
+            <span>Rp 120.000</span>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <p style="font-size:9px; color:#666; margin-top:8px;">Hebat! Kamu sudah hemat 35% minggu ini.</p>
+    </div>
+
+</body>
+</html>

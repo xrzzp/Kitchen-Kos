@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --primary-green: #2d5a1b;
+            --bg-gray: #f7f8f3;
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', sans-serif; 
+            background-color: var(--bg-gray); 
+            padding-bottom: 20px;
+        }
+
+        /* Header Area */
+        .header-top { 
+            background: white; 
+            padding: 15px 18px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .header-top img { width: 25px; }
+
+        /* Judul Section */
+        .title-section { padding: 15px 18px; background: white; }
+        .title-section h1 { font-size: 24px; color: var(--primary-green); margin: 0; font-weight: 800; }
+        .title-section p { font-size: 13px; color: #666; margin: 8px 0 0; }
+
+        .filter-scroll { 
+            display: flex; 
+            gap: 10px; 
+            overflow-x: auto; 
+            padding: 15px 18px; 
+            background: white;
+            scrollbar-width: none; 
+        }
+        .filter-scroll::-webkit-scrollbar { display: none; }
+        
+        .chip { 
+            padding: 8px 18px; 
+            background: #f1f5f0; 
+            border-radius: 25px; 
+            font-size: 11px; 
+            font-weight: bold; 
+            color: #555;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+        /* Warna Hijau untuk Chip yang Sedang Aktif */
+        .chip.active { 
+            background: var(--primary-green); 
+            color: white; 
+        }
+
+        /* Grid Dua Kolom Sejajar */
+        .recipe-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 12px; 
+            padding: 15px; 
+            align-items: stretch; 
+        }
+
+        .small-card { 
+            background: white; 
+            border-radius: 18px; 
+            overflow: hidden; 
+            border: 1px solid #eee;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .small-img { 
+            width: 100%; 
+            height: 110px; 
+            background: #eee; 
+            object-fit: cover; 
+        }
+
+        .card-content {
+            padding: 10px;
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tag { 
+            position: absolute; top: 8px; right: 8px; 
+            font-size: 8px; padding: 2px 8px; border-radius: 10px; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-top">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <img src="Logo KK.png" alt="Logo">
+            <b style="color:var(--primary-green); font-size:14px;">Kitchen Kos</b>
+        </div>
+        <span>🔔</span>
+    </div>
+
+    <div class="title-section">
+        <h1>Temukan Resep Hemat</h1>
+        <p>Masak nikmat tanpa bikin kantong bolong.</p>
+    </div>
+
+    <div class="filter-scroll">
+        <!-- Chip 3 Bahan: Kembali ke resep.html -->
+        <div class="chip" onclick="location.href='resep.html'" style="cursor: pointer;">3 Bahan</div>
+        
+        <!-- Chip < 10 Menit: Aktif (Hijau) -->
+        <div class="chip active" onclick="location.href='resep_10menit.html'" style="cursor: pointer;">< 10 Menit</div>
+        
+        <!-- Chip < 10 Ribu -->
+       <div class="chip" onclick="location.href='resep_10rb.html'" style="cursor: pointer;">< 10 Ribu</div>
+    </div>
+
+<div class="recipe-grid">
+    
+    <!-- Menu 1 -->
+    <div class="small-card">
+        <span class="tag" style="background:#e3f2fd; color:#1565c0;">Praktis</span>
+        <img src="assets/roti.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Roti Isi Telur dan Sayur</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 7m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 8k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 2 -->
+    <div class="small-card">
+        <span class="tag" style="background:#e8f5e9; color:#2d5a1b;">Sehat</span>
+        <img src="assets/kangkung.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Kangkung dan Tahu</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 8m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 6k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 3 -->
+    <div class="small-card">
+        <span class="tag" style="background:#fff3e0; color:#e65100;">Sat Set</span>
+        <img src="assets/telur.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Telur Ceplok Kecap</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 5m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 5k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 4 -->
+    <div class="small-card">
+        <span class="tag" style="background:#ffebee; color:#c62828;">Pedas</span>
+        <img src="assets/telur tomat.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Telur Tomat</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 9m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 7k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 5 -->
+    <div class="small-card">
+        <span class="tag" style="background:#f3e5f5; color:#7b1fa2;">Favorit</span>
+        <img src="assets/Tahu dan Telur.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Sup Tahu dan Telur</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 10m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 15k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 6 -->
+    <div class="small-card">
+        <span class="tag" style="background:#e0f7fa; color:#006064;">Kenyang</span>
+        <img src="assets/miekeju.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Omelet Mie Keju</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 8m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 9k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 7 -->
+    <div class="small-card">
+        <span class="tag" style="background:#f1f8e9; color:#33691e;">Sehat</span>
+        <img src="assets/omelate.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Oatmeal Gurih Telur</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 10m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 10k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 9 -->
+    <div class="small-card">
+        <span class="tag" style="background:#fff3e0; color:#e65100;">Manis</span>
+        <img src="assets/pisangp.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Pisang Panggang</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 8m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 6k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 10 -->
+    <div class="small-card">
+        <span class="tag" style="background:#e0f2f1; color:#00695c;">Urban</span>
+        <img src="assets/tortia.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Tortilla Isi Telur</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 9m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 12k</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu 12 -->
+    <div class="small-card">
+        <span class="tag" style="background:#e8f5e9; color:#2d5a1b;">Simple</span>
+        <img src="assets/orek.jpeg" class="small-img">
+        <div class="card-content">
+            <h4 style="margin:0; font-size:11px;">Orek Tempe Tahu</h4>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <span style="font-size:9px; color:#888;">⏱️ 9m</span>
+                <span style="font-size:9px; font-weight:bold; color:var(--primary-green);">Rp 6k</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
